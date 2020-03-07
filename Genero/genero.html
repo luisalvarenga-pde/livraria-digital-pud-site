@@ -27,7 +27,7 @@
 <body>
 
     <div class="container-fluid">
-        <h1>Manuten&ccedil;&atilde;o de editoras</h1>
+        <h1>Manuten&ccedil;&atilde;o de Generos</h1>
         <main id="app">
             <router-view></router-view>
         </main>
@@ -39,14 +39,14 @@
                 <a class="btn btn-default">
                     <router-link :to="{path: '/criar'}">
                         <span class="glyphicon glyphicon-plus"></span>
-                        Incluir editora
+                        Incluir genero
                     </router-link>
                 </a>
             </div>
             <div class="filters row">
                 <div class="form-group col-sm-3">
-                    <label for="search-element">Nome da Editora</label>
-                    <input v-model="palavraChave" class="form-control" id="search-element" required />
+                    <label for="search-element">Nome da genero</label>
+                    <input v-model="palavraChave" class="form-control" id="search-element" requred />
                 </div>
             </div>
             <table class="table">
@@ -58,23 +58,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="editora in filtrarEditoras">
+                    <tr v-for="genero in filtrarGeneros">
                         <td>
                             <a>
-                                <router-link :to="{name: 'ler', params: {id: editora.idEditora}}">
-                                    {{ editora.nome }}
+                                <router-link :to="{name: 'ler', params: {id: genero.idGenero}}">
+                                    {{ genero.nome }}
                                 </router-link>
                             </a>
                         </td>
-                        <td>{{ editora.cnpj }}</td>
+                        
                         <td>
                             <a class="btn btn-warning btn-xs">
-                                <router-link :to="{name: 'atualizar', params: {id: editora.idEditora}}">
+                                <router-link :to="{name: 'atualizar', params: {id: genero.idGenero}}">
                                     Alterar
                                 </router-link>
                             </a>
                             <a class="btn btn-danger btn-xs">
-                                <router-link :to="{name: 'excluir', params: {id: editora.idEditora}}">
+                                <router-link :to="{name: 'excluir', params: {id: genero.idGenero}}">
                                     Excluir
                                 </router-link>
                             </a>
@@ -87,29 +87,24 @@
 
     <template id="ler">
         <div>
-            <h2>{{ editora.nome }}</h2>
+            <h2>{{ genero.nome }}</h2>
             <strong>CNPJ: </strong>
-            <div>{{ editora.cnpj }}</div>
             <br />
 
             <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
             <a>
-                <router-link to="/">Voltar para a lista de editoras</router-link>
+                <router-link to="/">Voltar para a lista de genero</router-link>
             </a>
         </div>
     </template>
 
     <template id="criar">
         <div>
-            <h2>Incluir editora</h2>
+            <h2>Incluir genero</h2>
             <form v-on:submit="criar">
                 <div class="form-group w-75">
                     <label for="nome">Nome</label>
-                    <input class="form-control" id="nome" v-model="editora.nome" required maxlength="25" />
-                </div>
-                <div class="form-group w-50">
-                    <label for="cnpj">CNPJ</label>
-                    <input class="form-control" id="cnpj" v-model="editora.cnpj" required maxlength="18" />
+                    <input class="form-control" id="nome" v-model="genero.nome" required maxlength="25" />
                 </div>
                 <button type="submit" class="btn btn-primary">Criar</button>
                 <a class="btn btn-default">
@@ -121,15 +116,11 @@
 
     <template id="atualizar">
         <div>
-            <h2>Alterar editora</h2>
+            <h2>Alterar genero</h2>
             <form v-on:submit="atualizar">
                 <div class="form-group w-75">
                     <label for="nome">Nome</label>
-                    <input class="form-control" id="nome" v-model="editora.nome" required maxlength="25" />
-                </div>
-                <div class="form-group w-50">
-                    <label for="cnpj">CNPJ</label>
-                    <input class="form-control" id="cnpj" rows="10" v-model="editora.cnpj" required maxlength="18" />
+                    <input class="form-control" id="nome" v-model="genero.nome" required maxlength="25" />
                 </div>
                 <button type="submit" class="btn btn-primary">Alterar</button>
                 <a class="btn btn-default">
@@ -141,7 +132,7 @@
 
     <template id="excluir">
         <div>
-            <h2>Excluir editora: {{ editora.nome }}</h2>
+            <h2>Excluir genero: {{ genero.nome }}</h2>
             <form v-on:submit="excluir">
                 <p>A exclus&atilde;o n&atilde;o pode ser desfeita.</p>
                 <button type="submit" class="btn btn-danger">Excluir</button>
@@ -154,6 +145,6 @@
 
 </body>
 
-<script type="module" src="editora.js"></script>
+<script type="module" src="genero.js"></script>
 
 </html>
