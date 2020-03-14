@@ -1,165 +1,296 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Livraria Livros Raros</title>
 
-    <link rel="stylesheet" href="public/style.css">
+    <link rel="stylesheet" href="public/style.css" />
 
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.css"
+    />
+  </head>
+  <body>
     <div id="container">
-        <nav class="navbar">
-            <a href="#" class="navbar-logo"><img src="public/img/logo.png" alt="Logo" width="100px"></a>
-            
-            <div class="pesquisa">
-                <input type="text" name="pesquisa" id="pesquisa" placeholder="Buscar..." maxlength="46">
-                <input class="search" type="image" src="public/img/search-icon.png" alt="Search" width="40">
-            </div>
+      <nav class="navbar">
+        <a href="#" class="navbar-brand"
+          ><img src="public/img/logo2.jpeg" alt="Logo" width="100%"
+        /></a>
 
-            <ul class="mr-auto">
-                <li class="nav-item">
-                    <a href="index.html">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a href="livros.html">Livros</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#">Sobre</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#">Contato</a>
-                </li>
-            </ul>
-            <div class="clear"></div>
-        </nav>
-        
-        <div id="area-conteudo">
-            
-            <template id="listar-genero">
-                <aside class="menu-lateral" v-for="genero in filtrarGeneros">
-                    <h5>Categorias</h5>
-                    <ul>
-                        <li><a href="#">Ação</a></li>
-                        <li><a href="#">Drama</a></li>
-                        <li><a href="#">Terror</a></li>
-                        <li><a href="#">Fantasia</a></li>
-                        <li><a href="#">Romance</a></li>
-                        <li><a href="#">Comédia</a></li>
-                        <li><a href="#">Guerra</a></li>
-                        <li><a href="#">Mistério</a></li>
-                        <li><a href="#">Família</a></li>
-                        <li><a href="#">Animação</a></li>
-                        <li><a href="#">Documentário</a></li>
-                        <li><a href="#">Biografia</a></li>
-                        <li><a href="#">Musical</a></li>
-                        <li><a href="#">Suspense</a></li>
-                        <li><a href="#">Ficção científica</a></li>
-                        <li><a href="#"></a></li>
-                        <li><a href="#"></a></li>
-                    </ul>
-                </aside>
-        </template>
-            
-            <article class="postagens">
-                <section class="livro-postagem">
-                    <h3>Romance:</h3>
-                    <ul>
-                        <li class="livro-item"><a href="#" class="livro-link"><img src="public/img/livro-romance.jpeg" alt="Romance" width="245" height="330">
-                            <h2>Tudo por você</h2>
-                        </a></li>
-                        <li class="livro-item"><a href="#" class="livro-link"><img src="public/img/livro-romance.jpeg" alt="Romance" width="245" height="330">
-                            <h2>Tudo por você</h2>
-                        </a></li>
-                        <li class="livro-item"><a href="#" class="livro-link"><img src="public/img/livro-romance.jpeg" alt="Romance" width="245" height="330">
-                            <h2>Tudo por você</h2>
-                        </a></li>
-                        <li class="livro-item"><a href="#" class="livro-link"><img src="public/img/livro-romance.jpeg" alt="Romance" width="245" height="330">
-                            <h2>Tudo por você</h2>
-                        </a></li>
-                        
-                    </ul>
-                </section>
-
-                <section class="livro-postagem">
-                    <h3>Ação:</h3>
-                    <ul>
-                        <li class="livro-item"><a href="#" class="livro-link"><img src="public/img/livro-acao.jpeg" alt="Ação" width="245" height="330">
-                            <h2>O Livro da Selva</h2>
-                        </a></li>
-                        <li class="livro-item"><a href="#" class="livro-link"><img src="public/img/livro-acao.jpeg" alt="Ação" width="245" height="330">
-                            <h2>O Livro da Selva</h2>
-                        </a></li>
-                        <li class="livro-item"><a href="#" class="livro-link"><img src="public/img/livro-acao.jpeg" alt="Ação" width="245" height="330">
-                            <h2>O Livro da Selva</h2>
-                        </a></li>
-                        <li class="livro-item"><a href="#" class="livro-link"><img src="public/img/livro-acao.jpeg" alt="Ação" width="245" height="330">
-                            <h2>O Livro da Selva</h2>
-                        </a></li>
-                    </ul>
-                </section>
-
-                <section class="livro-postagem">
-                    <h3>Terror:</h3>
-                    <ul>
-                        <li class="livro-item"><a href="#" class="livro-link"><img src="public/img/livro-terror.jpeg" alt="Terror" width="245" height="330">
-                            <h2>O Sequestro dos Uruguaios</h2>
-                        </a></li>
-                        <li class="livro-item"><a href="#" class="livro-link"><img src="public/img/livro-terror.jpeg" alt="Terror" width="245" height="330">
-                            <h2>O Sequestro dos Uruguaios</h2>
-                        </a></li>
-                        <li class="livro-item"><a href="#" class="livro-link"><img src="public/img/livro-terror.jpeg" alt="Terror" width="245" height="330">
-                            <h2>O Sequestro dos Uruguaios</h2>
-                        </a></li>
-                        <li class="livro-item"><a href="#" class="livro-link"><img src="public/img/livro-terror.jpeg" alt="Terror" width="245" height="330">
-                            <h2>O Sequestro dos Uruguaios</h2>
-                        </a></li>
-                    </ul>
-                </section>
-
-                <section class="livro-postagem">
-                    <h3>Guerra:</h3>
-                    <ul>
-                        <li class="livro-item"><a href="#" class="livro-link"><img src="public/img/livro-guerra.jpeg" alt="#" width="245" height="330">
-                            <h2>O Cavalo Perfeito</h2>
-                        </a></li>
-                        <li class="livro-item"><a href="#" class="livro-link"><img src="public/img/livro-guerra.jpeg" alt="#" width="245" height="330">
-                            <h2>O Cavalo Perfeito</h2>
-                        </a></li>
-                        <li class="livro-item"><a href="#" class="livro-link"><img src="public/img/livro-guerra.jpeg" alt="#" width="245" height="330">
-                            <h2>O Cavalo Perfeito</h2>
-                        </a></li>
-                        <li class="livro-item"><a href="#" class="livro-link"><img src="public/img/livro-guerra.jpeg" alt="#" width="245" height="330">
-                            <h2>O Cavalo Perfeito</h2>
-                        </a></li>
-                    </ul>
-                </section>
-
-
-            </article>
-            <div class="clear"></div>
+        <div class="pesquisa">
+          <input
+            type="text"
+            name="pesquisa"
+            id="pesquisa"
+            placeholder="Buscar..."
+            maxlength="45"
+          />
+          <input
+            class="search"
+            type="image"
+            src="public/img/search-icon.png"
+            alt="Search"
+            width="40"
+          />
         </div>
 
-        <footer>
-            &copy; PUD - Livraria Livros Raros 2020
-        </footer>
+        <ul class="mr-auto">
+          <li class="nav-item">
+            <a href="#">Sobre</a>
+          </li>
+          <li class="nav-item">
+            <a href="#">Contato</a>
+          </li>
+        </ul>
+        <div class="clear"></div>
+      </nav>
+
+      <div id="area-conteudo">
+        <aside class="menu-lateral" v-for="genero in filtrarGeneros">
+          <h5>Categorias</h5>
+          <ul>
+            <li><a href="#">Ação</a></li>
+            <li><a href="#">Drama</a></li>
+            <li><a href="#">Terror</a></li>
+            <li><a href="#">Fantasia</a></li>
+            <li><a href="#">Romance</a></li>
+            <li><a href="#">Comédia</a></li>
+            <li><a href="#">Guerra</a></li>
+            <li><a href="#">Mistério</a></li>
+            <li><a href="#">Família</a></li>
+            <li><a href="#">Animação</a></li>
+            <li><a href="#">Documentário</a></li>
+            <li><a href="#">Biografia</a></li>
+            <li><a href="#">Musical</a></li>
+            <li><a href="#">Suspense</a></li>
+            <li><a href="#">Ficção científica</a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+          </ul>
+        </aside>
+
+        <article class="postagens">
+          <section class="livro-postagem">
+            <h3>Romance:</h3>
+            <ul>
+              <li class="livro-item">
+                <a href="#" class="livro-link"
+                  ><img
+                    src="public/img/livro-romance.jpg"
+                    alt="Romance"
+                    width="245"
+                    height="330"
+                  />
+                  <h2>Tudo por você</h2>
+                </a>
+              </li>
+              <li class="livro-item">
+                <a href="#" class="livro-link"
+                  ><img
+                    src="public/img/livro-romance.jpg"
+                    alt="Romance"
+                    width="245"
+                    height="330"
+                  />
+                  <h2>Tudo por você</h2>
+                </a>
+              </li>
+              <li class="livro-item">
+                <a href="#" class="livro-link"
+                  ><img
+                    src="public/img/livro-romance.jpg"
+                    alt="Romance"
+                    width="245"
+                    height="330"
+                  />
+                  <h2>Tudo por você</h2>
+                </a>
+              </li>
+              <li class="livro-item">
+                <a href="#" class="livro-link"
+                  ><img
+                    src="public/img/livro-romance.jpg"
+                    alt="Romance"
+                    width="245"
+                    height="330"
+                  />
+                  <h2>Tudo por você</h2>
+                </a>
+              </li>
+            </ul>
+          </section>
+
+          <section class="livro-postagem">
+            <h3>Ação:</h3>
+            <ul>
+              <li class="livro-item">
+                <a href="#" class="livro-link"
+                  ><img
+                    src="public/img/livro-acao.jpg"
+                    alt="Ação"
+                    width="245"
+                    height="330"
+                  />
+                  <h2>O Livro da Selva</h2>
+                </a>
+              </li>
+              <li class="livro-item">
+                <a href="#" class="livro-link"
+                  ><img
+                    src="public/img/livro-acao.jpg"
+                    alt="Ação"
+                    width="245"
+                    height="330"
+                  />
+                  <h2>O Livro da Selva</h2>
+                </a>
+              </li>
+              <li class="livro-item">
+                <a href="#" class="livro-link"
+                  ><img
+                    src="public/img/livro-acao.jpg"
+                    alt="Ação"
+                    width="245"
+                    height="330"
+                  />
+                  <h2>O Livro da Selva</h2>
+                </a>
+              </li>
+              <li class="livro-item">
+                <a href="#" class="livro-link"
+                  ><img
+                    src="public/img/livro-acao.jpg"
+                    alt="Ação"
+                    width="245"
+                    height="330"
+                  />
+                  <h2>O Livro da Selva</h2>
+                </a>
+              </li>
+            </ul>
+          </section>
+
+          <section class="livro-postagem">
+            <h3>Terror:</h3>
+            <ul>
+              <li class="livro-item">
+                <a href="#" class="livro-link"
+                  ><img
+                    src="public/img/livro-terror.jpg"
+                    alt="Terror"
+                    width="245"
+                    height="330"
+                  />
+                  <h2>O Sequestro dos Uruguaios</h2>
+                </a>
+              </li>
+              <li class="livro-item">
+                <a href="#" class="livro-link"
+                  ><img
+                    src="public/img/livro-terror.jpg"
+                    alt="Terror"
+                    width="245"
+                    height="330"
+                  />
+                  <h2>O Sequestro dos Uruguaios</h2>
+                </a>
+              </li>
+              <li class="livro-item">
+                <a href="#" class="livro-link"
+                  ><img
+                    src="public/img/livro-terror.jpg"
+                    alt="Terror"
+                    width="245"
+                    height="330"
+                  />
+                  <h2>O Sequestro dos Uruguaios</h2>
+                </a>
+              </li>
+              <li class="livro-item">
+                <a href="#" class="livro-link"
+                  ><img
+                    src="public/img/livro-terror.jpg"
+                    alt="Terror"
+                    width="245"
+                    height="330"
+                  />
+                  <h2>O Sequestro dos Uruguaios</h2>
+                </a>
+              </li>
+            </ul>
+          </section>
+
+          <section class="livro-postagem">
+            <h3>Guerra:</h3>
+            <ul>
+              <li class="livro-item">
+                <a href="#" class="livro-link"
+                  ><img
+                    src="public/img/livro-guerra.jpg"
+                    alt="#"
+                    width="245"
+                    height="330"
+                  />
+                  <h2>O Cavalo Perfeito</h2>
+                </a>
+              </li>
+              <li class="livro-item">
+                <a href="#" class="livro-link"
+                  ><img
+                    src="public/img/livro-guerra.jpg"
+                    alt="#"
+                    width="245"
+                    height="330"
+                  />
+                  <h2>O Cavalo Perfeito</h2>
+                </a>
+              </li>
+              <li class="livro-item">
+                <a href="#" class="livro-link"
+                  ><img
+                    src="public/img/livro-guerra.jpg"
+                    alt="#"
+                    width="245"
+                    height="330"
+                  />
+                  <h2>O Cavalo Perfeito</h2>
+                </a>
+              </li>
+              <li class="livro-item">
+                <a href="#" class="livro-link"
+                  ><img
+                    src="public/img/livro-guerra.jpg"
+                    alt="#"
+                    width="245"
+                    height="330"
+                  />
+                  <h2>O Cavalo Perfeito</h2>
+                </a>
+              </li>
+            </ul>
+          </section>
+        </article>
+        <div class="clear"></div>
+      </div>
+
+      <footer>
+        &copy; PUD - Livraria Livros Raros 2020
+      </footer>
     </div>
 
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.js"></script>
-    <script>
-        $('.carousel').slick({
-            infinite: true,
-            speed: 500,
-            slidesToShow: 4,
-            slidesToScroll: 4,
-            autoplay: true,
-            autoplaySpeed: 2000,
-        });
-    </script>
-</body>
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-1.11.0.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-migrate-1.2.1.min.js"
+    ></script>
+  </body>
 </html>

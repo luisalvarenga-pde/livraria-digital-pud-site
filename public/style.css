@@ -6,7 +6,7 @@
 body{
     font-family: 'Times New Roman', Times, serif;
     font-size: 16px;
-    background: url(img/bg-fundo-2.jpeg)
+    background: url(img/bg-fundo.jpg)
 }
 
 /* Configurações principais */
@@ -33,7 +33,7 @@ a{text-decoration: none;}
     position: relative;
 }
 
-.navbar-logo{float: left; margin: 10px; width: 100px;}
+.navbar-brand{float: left;padding: 5px 0 0 5px; width: 150px;}
 
 .mr-auto {float: right; margin-right: 30px;}
 
@@ -55,12 +55,13 @@ a{text-decoration: none;}
 .postagens{
     float: right;
     width: 86%;
-    border: 1px solid #d2d2d2;
-    color: #fff;
+    border: 1px solid #ffff;
+    color: #ffffff;
+    background: url(img/bg-fundo.jpg)
 }
 
 footer{
-    color: #fff;
+    color: #000;
     font-size: 20px;
     text-align: center;
     padding: 5px;
@@ -72,8 +73,8 @@ footer{
     float: left;
     background: #151b55;
     position: relative;
-    top: 10px;
-    left: 120px;
+    top: 27px;
+    left: 200px;
 }
 
 #pesquisa{
@@ -102,6 +103,10 @@ footer{
 
 
 /* Menu de Navegação */
+.nav-item{
+    margin-top: 20px;
+}
+
 .nav-item a:hover{text-decoration: underline;}
 
 .nav-item a{
@@ -152,14 +157,16 @@ footer{
     border-radius: 2px;
     background: #000000;
     display: inline-block;
-    padding: 3px;
-    margin: 3px auto;
+    padding: 8px;
+    margin: 3px;
 }
 
 .livro-link{
     text-align: center;
     color: #fff;
 }
+
+h3{font-size: 2.5em; color: #3b371e;}
 
 .livro-link:hover{
     text-decoration: underline;
@@ -174,3 +181,4 @@ footer{
 .number a:hover{
     text-decoration: underline;
 }
+
