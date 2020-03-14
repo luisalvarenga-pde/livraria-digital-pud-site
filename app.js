@@ -1,6 +1,7 @@
-import {baseUrl} from 'modulos/config.js'
+import {baseUrl} from './modulos/config.js'
 
 const apiUrl = baseUrl + '/genero/';
+console.log(apiUrl);
 
 const listar_genero = Vue.extend({
     template: '#listar-genero',
