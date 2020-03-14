@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../public/livraria.css">
+
+    <!-- Optional theme -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+    <title>Sistema de Controle de Livrarias</title>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <h1>Manuten&ccedil;&atilde;o de Livros</h1>
+        <main id="app">
+            <router-view></router-view>
+        </main>
+    </div>
+
+    <template id="listar">
+        <div>
+            <div class="actions">
+                <a class="btn btn-default">
+                    <router-link :to="{path: '/criar'}">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        Incluir livro
+                    </router-link>
+                </a>
+            </div>
+            <div class="filters row">
+                <div class="form-group col-sm-3">
+                    <label for="search-element">Nome do Livro</label>
+                    <input v-model="palavraChave" class="form-control" id="search-element" required />
+                </div>
+            </div>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th>Autor</th>
+                        <th>Gênero</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="obj in filtrarLivros">
+                        <td>
+                            <a>
+                                <router-link :to="{name: 'ler', params: {id: obj['livro.id']}}">
+                                    {{ obj['livro.nome']}}
+                                </router-link>
+                            </a>
+                        </td>
+                        <td>{{ obj['livro.autor.nome'] }}</td>
+                        <td>{{obj['livro.genero.nome']}}</td>
+                        <td>
+                            <a class="btn btn-warning btn-xs">
+                                <router-link :to="{name: 'atualizar', params: {id: obj['livro.id']}}">
+                                    Alterar
+                                </router-link>
+                            </a>
+                            <a class="btn btn-danger btn-xs">
+                                <router-link :to="{name: 'excluir', params: {id: obj['livro.id']}}">
+                                    Excluir
+                                </router-link>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </template>
+    
+    <template id="ler">
+        <div>
+            <h2>{{ livro.nome }}</h2>
+            <strong>Autor: </strong>
+            <div>{{ livro.autor }}</div>
+            <strong>Descrição: </strong>
+            <div>{{ livro.descricao }}</div>
+            <strong>Gênero: </strong>
+            <div>{{ livro.genero }}</div>
+            <strong>Total de Páginas: </strong>
+            <div>{{ livro.paginas }}</div>
+            <strong>Isbn: </strong>
+            <div>{{ livro.isbn }}</div>
+            <strong>Ano de publicação: </strong>
+            <div>{{ livro.ano }}</div>
+            <strong>Edição: </strong>
+            <div>{{ livro.edicao }}</div>
+            <strong>Editora: </strong>
+            <div>{{ livro.editora }}</div>
+            <br />
+
+            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+            <a>
+                <router-link to="/">Voltar para a lista de livros</router-link>
+            </a>
+        </div>
+    </template>
+
+    <template id="criar">
+        <div>
+            <h2>Incluir livro</h2>
+            <form v-on:submit="criar">
+                <div class="form-group w-75">
+                    <label for="nome">Nome</label>
+                    <input class="form-control" id="nome" v-model="livro.nome" required maxlength="25" />
+                </div>
+                <div class="form-group w-50">
+                    <label for="autor">Autor</label>
+                    <input class="form-control" id="autor" v-model="livro.autor" required maxlength="18" />
+                </div>
+                <div class="form-group w-50">
+                    <label for="descricao">Descrição</label>
+                    <input class="form-control" id="descricao" v-model="livro.descricao" required maxlength="18" />
+                </div>
+                <div class="form-group w-50">
+                    <label for="genero">Gênero</label>
+                    <input class="form-control" id="genero" v-model="livro.genero" required maxlength="18" />
+                </div>
+                <div class="form-group w-50">
+                    <label for="paginas">Total de Páginas</label>
+                    <input class="form-control" id="paginas" v-model="livro.totalDePaginas" required maxlength="18" />
+                </div>
+                <div class="form-group w-50">
+                    <label for="isbn">Isbn</label>
+                    <input class="form-control" id="isbn" v-model="livro.isbn" required maxlength="18" />
+                </div>
+                <div class="form-group w-50">
+                    <label for="ano">Ano de Publicação</label>
+                    <input class="form-control" id="ano" v-model="livro.ano" required maxlength="18" />
+                </div>
+                <div class="form-group w-50">
+                    <label for="edicao">Edição</label>
+                    <input class="form-control" id="edicao" v-model="livro.edicao" required maxlength="18" />
+                </div>
+                <div class="form-group w-50">
+                    <label for="editora">Editora</label>
+                    <input class="form-control" id="editora" v-model="livro.editora" required maxlength="18" />
+                </div>
+                <button type="submit" class="btn btn-primary">Criar</button>
+                <a class="btn btn-default">
+                    <router-link to="/">Cancelar</router-link>
+                </a>
+            </form>
+        </div>
+    </template>
+
+    <template id="atualizar">
+        <div>
+            <h2>Alterar livro</h2>
+            <form v-on:submit="atualizar">
+                <div class="form-group w-75">
+                    <label for="nome">Livro</label>
+                    <input class="form-control" id="nome" v-model="livro.nome" required maxlength="25" />
+                </div>
+                <div class="form-group w-50">
+                    <label for="autor">Autor</label>
+                    <input class="form-control" id="autor" rows="10" v-model="livro.autor" required maxlength="18" />
+                </div>
+                <div class="form-group w-50">
+                    <label for="descricao">Descrição</label>
+                    <input class="form-control" id="descricao" rows="10" v-model="livro.descricao" required maxlength="18" />
+                </div>
+                <div class="form-group w-50">
+                    <label for="genero">Gênero</label>
+                    <input class="form-control" id="genero" rows="10" v-model="livro.genero" required maxlength="18" />
+                </div>
+                <div class="form-group w-50">
+                    <label for="paginas">Total de páginas</label>
+                    <input class="form-control" id="paginas" rows="10" v-model="livro.paginas" required maxlength="18" />
+                </div>
+                <div class="form-group w-50">
+                    <label for="isbn">Isbn</label>
+                    <input class="form-control" id="isbn" rows="10" v-model="livro.isbn" required maxlength="18" />
+                </div>
+                <div class="form-group w-50">
+                    <label for="ano">Ano de Publicação</label>
+                    <input class="form-control" id="ano" rows="10" v-model="livro.ano" required maxlength="18" />
+                </div>
+                <div class="form-group w-50">
+                    <label for="edicao">Edição</label>
+                    <input class="form-control" id="edicao" rows="10" v-model="livro.edicao" required maxlength="18" />
+                </div>
+                <div class="form-group w-50">
+                    <label for="editora">Editora</label>
+                    <input class="form-control" id="editora" rows="10" v-model="livro.editora" required maxlength="18" />
+                </div>
+                <button type="submit" class="btn btn-primary">Alterar</button>
+                <a class="btn btn-default">
+                    <router-link to="/">Cancelar</router-link>
+                </a>
+            </form>
+        </div>
+    </template>
+
+    <template id="excluir">
+        <div>
+            <h2>Excluir livro: {{ livro.nome }}</h2>
+            <form v-on:submit="excluir">
+                <p>A exclus&atilde;o n&atilde;o pode ser desfeita.</p>
+                <button type="submit" class="btn btn-danger">Excluir</button>
+                <a class="btn btn-default">
+                    <router-link to="/">Cancelar</router-link>
+                </a>
+            </form>
+        </div>
+    </template>
+
+</body>
+
+<script type="module" src="livro.js"></script>
+
+</html>
+    
