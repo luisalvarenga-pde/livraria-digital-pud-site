@@ -73,8 +73,8 @@ footer{
     float: left;
     background: #151b55;
     position: relative;
-    top: 10px;
-    left: 120px;
+    top: 27px;
+    left: 200px;
 }
 
 #pesquisa{
@@ -103,6 +103,10 @@ footer{
 
 
 /* Menu de Navegação */
+.nav-item{
+    margin-top: 20px;
+}
+
 .nav-item a:hover{text-decoration: underline;}
 
 .nav-item a{
