@@ -51,30 +51,22 @@
         <div class="clear"></div>
       </nav>
 
+      <template>
       <div id="area-conteudo">
-        <aside class="menu-lateral" v-for="genero in filtrarGeneros">
+        <aside class="menu-lateral" v-for="genero in listaGeneros">
           <h5>Categorias</h5>
           <ul>
-            <li><a href="#">Ação</a></li>
-            <li><a href="#">Drama</a></li>
-            <li><a href="#">Terror</a></li>
-            <li><a href="#">Fantasia</a></li>
-            <li><a href="#">Romance</a></li>
-            <li><a href="#">Comédia</a></li>
-            <li><a href="#">Guerra</a></li>
-            <li><a href="#">Mistério</a></li>
-            <li><a href="#">Família</a></li>
-            <li><a href="#">Animação</a></li>
-            <li><a href="#">Documentário</a></li>
-            <li><a href="#">Biografia</a></li>
-            <li><a href="#">Musical</a></li>
-            <li><a href="#">Suspense</a></li>
-            <li><a href="#">Ficção científica</a></li>
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
+            <li>
+                <a>
+                <router-link :to="{name: 'listaLivros', params: {id: genero.idGenero}}">
+                    {{ editora.nome }}
+                </router-link>
+            </a></li>
+
           </ul>
         </aside>
-
+        </template>
+        
         <article class="postagens">
           <section class="livro-postagem">
             <h3>Romance:</h3>
